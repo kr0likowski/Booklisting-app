@@ -30,7 +30,7 @@ public class Utils {
             JSONArray items = root.getJSONArray("items");
             for(int i = 0; i<items.length();i++){
                 JSONObject jsonBook = items.getJSONObject(i);
-                Book book = new Book(jsonBook.getString("thumbnail"),jsonBook.getString("title"),jsonBook.getString("authors"));
+                Book book = new Book(jsonBook.getString("thumbnail"),jsonBook.getString("title"),jsonBook.getString("authors"),createUrl(jsonBook.getString("infoLink")));
                 list.add(book);
             }
         } catch (JSONException e) {
