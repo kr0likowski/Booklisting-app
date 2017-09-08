@@ -1,6 +1,7 @@
 package com.example.macos.booklisting_app;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class BookAdapter extends ArrayAdapter<Book>{
                 TextView tt3 = (TextView) v.findViewById(R.id.desc);
 
                 if (tt1 != null) {
-                    //tt1.setImageResource(p.getImageSrc());
+                    tt1.setImageURI(Uri.parse(p.getImageSrc()));
                 }
 
                 if (tt2 != null) {

@@ -5,17 +5,17 @@ package com.example.macos.booklisting_app;
  */
 
 public class Book {
-    public Book(int i, String tit, String des){
+    public Book(String i, String tit, String des){
         imageSrc = i;
         title = tit;
         desc = des;
     }
 
-    public int getImageSrc() {return imageSrc;}
+    public String getImageSrc() {return imageSrc;}
     public String getTitle() {return title;}
     public String getDesc() {return desc;}
 
-    private int imageSrc;
+    private String imageSrc;
     private String title;
     private String desc;
 
