@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     public ArrayList<Book> createArray(){
         ArrayList<Book> bookArrayList = new ArrayList<>();
-        bookArrayList.add(new Book(0,"Android Programming","By Dr Dre"));
+        bookArrayList.add(new Book("","Android Programming","By Dr Dre"));
         return bookArrayList;
     }
 }
