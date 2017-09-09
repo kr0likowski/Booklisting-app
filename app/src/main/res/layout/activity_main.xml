@@ -11,10 +11,14 @@
        android:layout_width="match_parent"
        android:layout_height="40dp"
        android:background="#4e4eda"
-       android:id="@+id/searchview"></SearchView>
+       android:id="@+id/searchview">
+
+   </SearchView>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview"></ListView>
+        android:id="@+id/listview">
+
+    </ListView>
 
 </LinearLayout>

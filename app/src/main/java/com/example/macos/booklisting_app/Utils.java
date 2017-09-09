@@ -30,7 +30,9 @@ public class Utils {
             JSONArray items = root.getJSONArray("items");
             for(int i = 0; i<items.length();i++){
                 JSONObject jsonBook = items.getJSONObject(i);
-                Book book = new Book(jsonBook.getString("thumbnail"),jsonBook.getString("title"),jsonBook.getString("authors"),createUrl(jsonBook.getString("infoLink")));
+                JSONObject volumeinfo = jsonBook.getJSONObject("volumeInfo");
+                JSONObject imagelinks = volumeinfo.getJSONObject("imageLinks");
+                Book book = new Book(imagelinks.getString("smallThumbnail"),volumeinfo.getString("title"),volumeinfo.getString("authors"),createUrl(jsonBook.getString("selfLink")));
                 list.add(book);
             }
         } catch (JSONException e) {
@@ -82,6 +84,7 @@ public class Utils {
             String line = bufferedReader.readLine();
             while(line!=null){
                 builder.append(line);
+                line = bufferedReader.readLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -90,6 +93,7 @@ public class Utils {
             bufferedReader.close();
         }
         return builder.toString();
+
 
 
     }
