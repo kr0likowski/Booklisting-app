@@ -1,5 +1,7 @@
 package com.example.macos.booklisting_app;
 
+import android.graphics.Bitmap;
+
 import java.net.URL;
 
 /**
@@ -7,18 +9,18 @@ import java.net.URL;
  */
 
 public class Book {
-    public Book(String i, String tit, String des, URL site){
+    public Book(Bitmap i, String tit, String des, URL site){
         imageSrc = i;
         title = tit;
         desc = des;
         url = site;
     }
 
-    public String getImageSrc() {return imageSrc;}
+    public Bitmap getImageSrc() {return imageSrc;}
     public String getTitle() {return title;}
     public String getDesc() {return desc;}
 
-    private String imageSrc;
+    private Bitmap imageSrc;
     private String title;
     private String desc;
 

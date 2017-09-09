@@ -1,11 +1,14 @@
 package com.example.macos.booklisting_app;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +36,7 @@ public class Utils {
                 JSONObject jsonBook = items.getJSONObject(i);
                 JSONObject volumeinfo = jsonBook.getJSONObject("volumeInfo");
                 JSONObject imagelinks = volumeinfo.getJSONObject("imageLinks");
-                Book book = new Book(imagelinks.getString("smallThumbnail"),volumeinfo.getString("title"),volumeinfo.getString("authors"),createUrl(jsonBook.getString("selfLink")));
+                Book book = new Book(getImageBitmap(createUrl(imagelinks.getString("smallThumbnail"))),volumeinfo.getString("title"),volumeinfo.getString("authors"),createUrl(jsonBook.getString("selfLink")));
                 list.add(book);
             }
         } catch (JSONException e) {
@@ -116,6 +120,21 @@ public class Utils {
             e.printStackTrace();
         }
         return url;
+    }
+    public static Bitmap getImageBitmap(URL aURL) {
+        Bitmap bm = null;
+        try {
+            URLConnection conn = aURL.openConnection();
+            conn.connect();
+            InputStream is = conn.getInputStream();
+            BufferedInputStream bis = new BufferedInputStream(is);
+            bm = BitmapFactory.decodeStream(bis);
+            bis.close();
+            is.close();
+        } catch (IOException e) {
+            Log.e("Utils", "Error getting bitmap", e);
+        }
+        return bm;
     }
 
 }

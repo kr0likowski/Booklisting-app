@@ -47,7 +47,7 @@ public class BookAdapter extends ArrayAdapter<Book>{
                 TextView tt3 = (TextView) v.findViewById(R.id.desc);
 
                 if (tt1 != null) {
-                    tt1.setImageURI(Uri.parse(p.getImageSrc()));
+                    tt1.setImageBitmap(p.getImageSrc());
                 }
 
                 if (tt2 != null) {
@@ -55,7 +55,7 @@ public class BookAdapter extends ArrayAdapter<Book>{
                 }
 
                 if (tt3 != null) {
-                    tt3.setText(p.getDesc());
+                    tt3.setText(p.getDesc().substring(2,p.getDesc().length()-2));
                 }
             }
 
