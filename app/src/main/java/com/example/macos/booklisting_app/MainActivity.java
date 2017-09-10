@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements android.app.Loade
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                url = "https://www.googleapis.com/books/v1/volumes?q={" + s + "}";
+                url = "https://www.googleapis.com/books/v1/volumes?q=" + s;
                 restartLoader();
                 return false;
             }
